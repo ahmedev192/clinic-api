@@ -1,0 +1,74 @@
+# Arabic translations for analytics module
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ar\n"
+
+msgid "Template Name"
+msgstr "اسم القالب"
+
+msgid "Template Name (Arabic)"
+msgstr "اسم القالب (عربي)"
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Description (Arabic)"
+msgstr "الوصف (عربي)"
+
+msgid "Report Type"
+msgstr "نوع التقرير"
+
+msgid "Financial Report"
+msgstr "تقرير مالي"
+
+msgid "Patient Demographics"
+msgstr "ديموغرافيا المرضى"
+
+msgid "Doctor Performance"
+msgstr "أداء الأطباء"
+
+msgid "Appointment Statistics"
+msgstr "إحصائيات المواعيد"
+
+msgid "Custom Report"
+msgstr "تقرير مخصص"
+
+msgid "Included Modules"
+msgstr "الوحدات المشمولة"
+
+msgid "Default Filters"
+msgstr "المرشحات الافتراضية"
+
+msgid "Date Range Configuration"
+msgstr "تكوين نطاق التاريخ"
+
+msgid "Aggregation Fields"
+msgstr "حقول التجميع"
+
+msgid "Group By Fields"
+msgstr "حقول التجميع حسب"
+
+msgid "Available Export Formats"
+msgstr "تنسيقات التصدير المتاحة"
+
+msgid "Include Charts"
+msgstr "تضمين الرسوم البيانية"
+
+msgid "Created By"
+msgstr "أنشئ بواسطة"
+
+msgid "Created At"
+msgstr "أنشئ في"
+
+msgid "Updated At"
+msgstr "حدث في"
+
+msgid "Is Active"
+msgstr "نشط"
+
+msgid "Report Templates"
+msgstr "قوالب التقارير"
+
+msgid "Report Template"
+msgstr "قالب التقرير"
