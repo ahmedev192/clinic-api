@@ -1,0 +1,614 @@
+{
+  "info": {
+    "name": "Django Authentication Backend API",
+    "description": "A comprehensive authentication and authorization backend with OAuth2/OIDC SSO support",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "User Registration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"securepassword123\",\n  \"password_confirm\": \"securepassword123\",\n  \"phone_number\": \"+1234567890\",\n  \"timezone\": \"UTC\",\n  \"language\": \"en\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/register/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "register", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    pm.collectionVariables.set('access_token', response.access);",
+                  "    pm.collectionVariables.set('refresh_token', response.refresh);",
+                  "    pm.collectionVariables.set('user_id', response.user.id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"securepassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/login/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "login", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/logout/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "logout", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/profile/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "profile", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User Profile",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John Updated\",\n  \"last_name\": \"Doe Updated\",\n  \"phone_number\": \"+1234567891\",\n  \"timezone\": \"America/New_York\",\n  \"language\": \"en\",\n  \"profile\": {\n    \"bio\": \"Updated bio\",\n    \"company\": \"Updated Company\",\n    \"job_title\": \"Updated Job Title\",\n    \"location\": \"New York, NY\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/profile/update/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "profile", "update", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_password\": \"securepassword123\",\n  \"new_password\": \"newpassword123\",\n  \"new_password_confirm\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/password/change/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "password", "change", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Request Password Reset",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/password-reset/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "password-reset", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Password Reset",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"reset-token-uuid\",\n  \"new_password\": \"newpassword123\",\n  \"new_password_confirm\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/password-reset/confirm/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "password-reset", "confirm", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"verification-token-uuid\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/verify-email/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "verify-email", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "OAuth2/SSO",
+      "item": [
+        {
+          "name": "Get OAuth2 Providers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/providers/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "providers", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Initiate OAuth2 Authorization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider_id\": \"provider-uuid\",\n  \"redirect_uri\": \"http://localhost:3000/callback\",\n  \"state\": \"random-state-string\",\n  \"scopes\": [\"openid\", \"profile\", \"email\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/authorize/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "authorize", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OAuth2 Callback",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"authorization-code\",\n  \"state\": \"state-parameter\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/callback/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "callback", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get External Accounts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/accounts/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "accounts", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Link External Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider_id\": \"provider-uuid\",\n  \"external_user_id\": \"external-user-id\",\n  \"external_username\": \"external-username\",\n  \"external_email\": \"user@example.com\",\n  \"external_claims\": {\n    \"sub\": \"external-user-id\",\n    \"email\": \"user@example.com\",\n    \"name\": \"John Doe\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/accounts/link/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "accounts", "link", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unlink External Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external_account_id\": \"external-account-uuid\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/accounts/unlink/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "accounts", "unlink", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get OAuth2 Sessions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/sessions/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "sessions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Revoke OAuth2 Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"session-uuid\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/oauth2/sessions/revoke/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "oauth2", "sessions", "revoke", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authorization",
+      "item": [
+        {
+          "name": "Get Roles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/roles/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "roles", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Permissions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/permissions/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "permissions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Roles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/user-roles/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "user-roles", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Assign User Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role_id\": \"role-uuid\",\n  \"expires_at\": \"2024-12-31T23:59:59Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/user-roles/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "user-roles", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Permissions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/user-permissions/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "user-permissions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Permission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permission\": \"user.create\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/check-permission/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "check-permission", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Django Admin",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/admin/",
+              "host": ["{{base_url}}"],
+              "path": ["admin", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API Documentation (Swagger)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/docs/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "docs", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API Schema",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/schema/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "schema", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
+
