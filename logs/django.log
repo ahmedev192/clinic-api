@@ -1,0 +1,154 @@
+ERROR 2025-10-09 17:21:09,847 signals 14144 7124 Failed to create reminders for appointment APT090828: 'Doctor' object has no attribute 'full_name'
+ERROR 2025-10-09 17:24:22,252 signals 18812 6212 Failed to create reminders for appointment APT375557: 'Doctor' object has no attribute 'full_name'
+ERROR 2025-10-09 17:33:16,239 signals 18008 18960 Failed to create reminders for appointment APT635172: 'Doctor' object has no attribute 'full_name'
+INFO 2025-10-09 17:34:06,052 signals 9864 17796 Created reminders for appointment APT126880
+INFO 2025-10-09 17:36:56,340 signals 18984 6896 Created reminders for appointment APT319685
+INFO 2025-10-09 17:37:30,207 signals 4376 16740 Created reminders for appointment APT037511
+INFO 2025-10-09 17:37:58,109 signals 11848 13020 Created reminders for appointment APT497518
+INFO 2025-10-09 17:37:58,743 signals 11848 13020 Created reminders for appointment APT107276
+ERROR 2025-10-09 17:37:59,371 log 11848 13020 Internal Server Error: /api/v1/billing/doctors/
+Traceback (most recent call last):
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\generics.py", line 150, in filter_queryset
+    queryset = backend().filter_queryset(self.request, queryset, self)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\rest_framework\backends.py", line 68, in filter_queryset
+    filterset = self.get_filterset(request, queryset, view)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\rest_framework\backends.py", line 20, in get_filterset
+    filterset_class = self.get_filterset_class(view, queryset)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\rest_framework\backends.py", line 51, in get_filterset_class
+    class AutoFilterSet(self.filterset_base):
+    ...<2 lines>...
+            fields = filterset_fields
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\filterset.py", line 62, in __new__
+    new_class.base_filters = new_class.get_filters()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\filterset.py", line 349, in get_filters
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: 'Meta.fields' must not contain non-model field names: specialization_en
+INFO 2025-10-09 17:38:00,036 signals 11848 13020 Created reminders for appointment APT905519
+INFO 2025-10-09 17:38:00,665 signals 11848 13020 Created reminders for appointment APT276834
+INFO 2025-10-09 17:38:01,274 signals 11848 13020 Created reminders for appointment APT646066
+INFO 2025-10-09 17:38:01,946 signals 11848 13020 Created reminders for appointment APT749128
+INFO 2025-10-09 17:38:02,596 signals 11848 13020 Created reminders for appointment APT342915
+INFO 2025-10-09 17:38:03,221 signals 11848 13020 Created reminders for appointment APT658400
+ERROR 2025-10-09 17:38:03,223 log 11848 13020 Internal Server Error: /api/v1/billing/doctors/
+Traceback (most recent call last):
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\rest_framework\generics.py", line 150, in filter_queryset
+    queryset = backend().filter_queryset(self.request, queryset, self)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\rest_framework\backends.py", line 68, in filter_queryset
+    filterset = self.get_filterset(request, queryset, view)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\rest_framework\backends.py", line 20, in get_filterset
+    filterset_class = self.get_filterset_class(view, queryset)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\rest_framework\backends.py", line 51, in get_filterset_class
+    class AutoFilterSet(self.filterset_base):
+    ...<2 lines>...
+            fields = filterset_fields
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\filterset.py", line 62, in __new__
+    new_class.base_filters = new_class.get_filters()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django_filters\filterset.py", line 349, in get_filters
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: 'Meta.fields' must not contain non-model field names: specialization_en
+INFO 2025-10-09 17:38:03,828 signals 11848 13020 Created reminders for appointment APT949331
+WARNING 2025-10-09 17:38:03,834 log 11848 13020 Bad Request: /api/v1/billing/patients/
+INFO 2025-10-09 17:38:04,500 signals 11848 13020 Created reminders for appointment APT846584
+INFO 2025-10-09 17:38:05,351 signals 11848 13020 Created reminders for appointment APT821337
+INFO 2025-10-09 17:38:05,935 signals 11848 13020 Created reminders for appointment APT811738
+INFO 2025-10-09 17:38:06,538 signals 11848 13020 Created reminders for appointment APT780720
+INFO 2025-10-09 17:38:07,170 signals 11848 13020 Created reminders for appointment APT454655
+INFO 2025-10-09 17:38:07,865 signals 11848 13020 Created reminders for appointment APT351005
+ERROR 2025-10-09 17:50:54,345 exception 8124 19076 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-10-09 17:50:54,435 log 8124 19076 Bad Request: /api/accounts/profile/
+ERROR 2025-10-09 17:50:54,436 exception 8124 19076 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Ahmed\AppData\Roaming\Python\Python313\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+WARNING 2025-10-09 17:50:54,438 log 8124 19076 Bad Request: /api/patients/
+WARNING 2025-10-09 17:52:05,103 log 4408 17524 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 17:52:05,105 log 4408 17524 Not Found: /api/patients/
+WARNING 2025-10-09 17:53:52,043 log 6308 13304 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 17:53:52,044 log 6308 13304 Not Found: /api/patients/
+WARNING 2025-10-09 17:58:19,659 log 20800 20848 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 17:58:19,661 log 20800 20848 Not Found: /api/patients/
+WARNING 2025-10-09 18:01:00,193 log 20184 5764 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:01:00,195 log 20184 5764 Not Found: /api/patients/
+WARNING 2025-10-09 18:01:56,260 log 19420 17376 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:01:56,261 log 19420 17376 Not Found: /api/patients/
+WARNING 2025-10-09 18:03:09,672 log 22128 21188 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:03:09,673 log 22128 21188 Not Found: /api/patients/
+WARNING 2025-10-09 18:03:52,811 log 10836 21872 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:03:52,812 log 10836 21872 Not Found: /api/patients/
+WARNING 2025-10-09 18:05:06,760 log 10032 10512 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:05:06,761 log 10032 10512 Not Found: /api/patients/
+WARNING 2025-10-09 18:07:01,112 log 18156 17640 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:07:01,113 log 18156 17640 Not Found: /api/patients/
+WARNING 2025-10-09 18:07:53,032 log 20824 17852 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:07:53,033 log 20824 17852 Not Found: /api/patients/
+WARNING 2025-10-09 18:10:31,811 log 19124 18000 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:10:31,812 log 19124 18000 Not Found: /api/patients/
+WARNING 2025-10-09 18:12:28,826 log 13968 19668 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:12:28,827 log 13968 19668 Not Found: /api/patients/
+WARNING 2025-10-09 18:13:33,285 log 22300 8628 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:13:33,286 log 22300 8628 Not Found: /api/patients/
+WARNING 2025-10-09 18:14:52,599 log 19400 16068 Not Found: /api/accounts/profile/
+WARNING 2025-10-09 18:14:52,600 log 19400 16068 Not Found: /api/patients/
